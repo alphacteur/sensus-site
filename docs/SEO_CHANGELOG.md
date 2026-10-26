@@ -1,6 +1,12 @@
 # Journal des modifications SEO — SENSUS
 
-## 2026-10-26 · Branche `seo/pages-vague-1` (non mise en ligne, validation attendue)
+## 2026-10-26 · Branche `seo/pages-vague-1`, mise en ligne le 26/10 (commit `5792294` sur `main`)
+
+**Vérification après déploiement** (build `built`) :
+- Les deux pages répondent en 200 en HTTPS, sans contenu mixte. Une URL sans barre oblique finale est redirigée en 301 vers l'URL canonique.
+- Title, canonical, H1 et JSON-LD (`Service`, `BreadcrumbList`, `FAQPage`) sont conformes. Pas de débordement horizontal. Console sans erreur.
+- Le bouton devis de la page Séminaire mène à `/?type=Séminaire#devis`, avec « Séminaire » coché et défilement jusqu'au formulaire. `?type=Renfort agence` coche « Renfort agence ».
+- L'accueil contient 4 liens vers les nouvelles pages. Le sitemap en ligne liste 3 URL.
 
 ### Fichiers
 
