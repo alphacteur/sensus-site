@@ -1,5 +1,21 @@
 # Journal des modifications SEO — SENSUS
 
+## 2026-10-26 · Branche `seo/guide-conducteur` (non mise en ligne, validation attendue)
+
+| Fichier | Modification | Motif |
+|---|---|---|
+| `src/pages/guide-conducteur-evenement.html` → `/guides/conducteur-evenement/` | Guide « Le conducteur d'événement : modèle et méthode » : rôle (différence avec le rétroplanning et le dossier de production), modèle de tableau (exemple de soirée de l'accueil, présenté comme illustratif), 6 étapes, 6 erreurs fréquentes, FAQ de 4 questions, liens vers les pages Soirée et Séminaire | Feuille de route 3.3. Premier contenu éditorial, adossé à un savoir-faire déjà montré sur l'accueil (le conducteur). |
+| `tools/build-pages.mjs` | Gestion des articles : `path` (sous-dossier `/guides/`), `type: "article"` (JSON-LD `Article`, auteur et éditeur SENSUS), `method: false`, CTA sans type pré-rempli, CSS `.prose` et `.tbl` | Réutilisable pour les prochains guides |
+| `src/pages/organisation-soiree-entreprise.html` | Lien vers le guide | Maillage |
+| Pages générées, `sitemap.xml` | Régénérés (5 URL). Les pages existantes ne changent que par l'ajout du CSS commun. | — |
+
+**À relire par Théo** : c'est du conseil de méthode, pas une affirmation sur SENSUS. Les colonnes « Responsable » et « Technique » de l'exemple sont illustratives.
+**Tests (local)** : H1 unique, JSON-LD valide (`WebPage`, `Article`, `BreadcrumbList`, `FAQPage`), canonical `/guides/conducteur-evenement/`. Mobile 375 px sans débordement de page, le tableau défile dans son cadre. Console sans erreur.
+
+## 2026-10-26 · IndexNow, non fait (validation requise)
+
+Préparé : un fichier de clé `/<clé>.txt` à la racine, puis un envoi de la liste des URL à `api.indexnow.org`, pour que Bing (et Yandex, Seznam…) découvrent les pages sans compte. **Refusé par le système d'autorisation de l'agent**, parce que l'action poussait directement sur `main` (production) sans accord explicite. Rien n'a été créé. À faire sur accord.
+
 ## 2026-10-26 · Correctif : arrivée sur le formulaire de devis depuis les pages de services
 
 **Constat (vérification en ligne de la page Soirée)** : un lien `/?type=…#devis` ouvert depuis une autre page arrivait en haut de l'accueil (`scrollY = 0`), au lieu du formulaire. Le défilement d'ancre `smooth` du navigateur était interrompu pendant le chargement. Les boutons devis des 3 pages de services étaient concernés.

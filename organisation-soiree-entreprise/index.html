@@ -594,6 +594,15 @@ dialog .close{position:absolute;top:16px;right:16px;width:40px;height:40px;borde
 .ink .cols p{color:var(--mute-i)}
 .mpanel+.mpanel{margin-top:16px}
 .seealso{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:40px}
+.prose{max-width:72ch;display:grid;gap:18px;font-size:17px}
+.prose h3{font-weight:800;font-stretch:80%;font-size:clamp(24px,2.2vw,30px);line-height:1.05;margin-top:18px}
+.prose ul,.prose ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.ink .prose{color:var(--mute-i)}.ink .prose h3,.ink .prose strong{color:var(--paper)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line-p);border-radius:16px;background:var(--card)}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;min-width:680px}
+.tbl th,.tbl td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line-p);vertical-align:top}
+.tbl th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mute-p)}
+.tbl tr:last-child td{border-bottom:0}
 @media (max-width:800px){.cols{grid-template-columns:1fr}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
@@ -683,6 +692,7 @@ dialog .close{position:absolute;top:16px;right:16px;width:40px;height:40px;borde
       <div class="mp-deliv"><em>Périmètre</em><p>Défini en amont. Les prestations techniques spécialisées sont assurées par les prestataires compétents.</p></div>
     </article>
     <div class="seealso rv">
+      <a class="tlink" href="/guides/conducteur-evenement/">Guide : construire le conducteur de votre événement →</a>
       <a class="tlink" href="/organisation-seminaire-entreprise/">Organisation de séminaires d’entreprise →</a>
       <a class="tlink" href="/#formules">Voir les formules →</a>
     </div>

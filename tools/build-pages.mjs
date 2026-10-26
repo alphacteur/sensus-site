@@ -40,6 +40,15 @@ const PAGE_CSS = `
 .ink .cols p{color:var(--mute-i)}
 .mpanel+.mpanel{margin-top:16px}
 .seealso{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:40px}
+.prose{max-width:72ch;display:grid;gap:18px;font-size:17px}
+.prose h3{font-weight:800;font-stretch:80%;font-size:clamp(24px,2.2vw,30px);line-height:1.05;margin-top:18px}
+.prose ul,.prose ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.ink .prose{color:var(--mute-i)}.ink .prose h3,.ink .prose strong{color:var(--paper)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line-p);border-radius:16px;background:var(--card)}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;min-width:680px}
+.tbl th,.tbl td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line-p);vertical-align:top}
+.tbl th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mute-p)}
+.tbl tr:last-child td{border-bottom:0}
 @media (max-width:800px){.cols{grid-template-columns:1fr}}
 `;
 
@@ -94,16 +103,22 @@ const AREA = [
 ];
 
 function render(slug, meta, body) {
-  const url = `${SITE}/${slug}/`;
-  const devisUrl = `/?type=${encodeURIComponent(meta.devisType)}#devis`;
+  const url = `${SITE}/${meta.path || slug}/`;
+  const isArticle = meta.type === "article";
+  const devisUrl = meta.devisType ? `/?type=${encodeURIComponent(meta.devisType)}#devis` : "/#devis";
   const faqHtml = meta.faq.map((f, i) => `      <details class="rv"${i === 0 ? " open" : ""}><summary>${f.q}<i aria-hidden="true"></i></summary><p>${f.a}</p></details>`).join("\n");
   const jsonld = {
     "@context": "https://schema.org",
     "@graph": [
       { "@type": "WebPage", "@id": `${url}#page`, "url": url, "name": meta.title, "description": meta.description, "inLanguage": "fr-FR",
-        "isPartOf": { "@id": `${SITE}/#site` }, "breadcrumb": { "@id": `${url}#ariane` }, "mainEntity": { "@id": `${url}#service` } },
-      { "@type": "Service", "@id": `${url}#service`, "name": meta.serviceName, "serviceType": meta.serviceType, "description": meta.description, "url": url,
-        "provider": { "@type": "ProfessionalService", "@id": `${SITE}/#agence`, "name": "SENSUS", "url": `${SITE}/` }, "areaServed": AREA },
+        "isPartOf": { "@id": `${SITE}/#site` }, "breadcrumb": { "@id": `${url}#ariane` }, "mainEntity": { "@id": `${url}#${isArticle ? "article" : "service"}` } },
+      isArticle
+        ? { "@type": "Article", "@id": `${url}#article`, "headline": text(meta.h1), "description": meta.description, "inLanguage": "fr-FR", "url": url,
+            "datePublished": meta.published || meta.lastmod, "dateModified": meta.lastmod, "image": `${SITE}/og-image.png`, "mainEntityOfPage": { "@id": `${url}#page` },
+            "author": { "@type": "ProfessionalService", "@id": `${SITE}/#agence`, "name": "SENSUS", "url": `${SITE}/` },
+            "publisher": { "@type": "ProfessionalService", "@id": `${SITE}/#agence`, "name": "SENSUS", "url": `${SITE}/`, "logo": { "@type": "ImageObject", "url": `${SITE}/logo.png` } } }
+        : { "@type": "Service", "@id": `${url}#service`, "name": meta.serviceName, "serviceType": meta.serviceType, "description": meta.description, "url": url,
+            "provider": { "@type": "ProfessionalService", "@id": `${SITE}/#agence`, "name": "SENSUS", "url": `${SITE}/` }, "areaServed": AREA },
       { "@type": "BreadcrumbList", "@id": `${url}#ariane`, "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${SITE}/` },
         { "@type": "ListItem", "position": 2, "name": meta.crumb, "item": url } ] },
@@ -168,7 +183,7 @@ ${relink(header, devisUrl)}
 </section>
 
 ${body.trim()}
-
+${meta.method === false ? "" : `
 <section class="band sheet" aria-labelledby="t-methode">
   <div class="wrap">
     <div class="head">
@@ -178,7 +193,7 @@ ${body.trim()}
     </div>
     ${steps}
   </div>
-</section>
+</section>`}
 
 <section class="band ink sheet" aria-labelledby="t-faq">
   <div class="wrap faq">
@@ -210,10 +225,11 @@ for (const file of readdirSync(srcDir).filter(f => f.endsWith(".html")).sort()) 
   const m = raw.match(/^<!--META\n([\s\S]*?)\nMETA-->\n([\s\S]*)$/);
   if (!m) throw new Error(`${file} : bloc META manquant`);
   const meta = JSON.parse(m[1]);
-  mkdirSync(join(ROOT, slug), { recursive: true });
-  writeFileSync(join(ROOT, slug, "index.html"), render(slug, meta, m[2]));
-  built.push({ loc: `${SITE}/${slug}/`, lastmod: meta.lastmod });
-  console.log(`✓ /${slug}/`);
+  const path = meta.path || slug;
+  mkdirSync(join(ROOT, path), { recursive: true });
+  writeFileSync(join(ROOT, path, "index.html"), render(slug, meta, m[2]));
+  built.push({ loc: `${SITE}/${path}/`, lastmod: meta.lastmod });
+  console.log(`✓ /${path}/`);
 }
 
 const homeLastmod = read(join(ROOT, "sitemap.xml")).match(/<loc>https:\/\/sensusagency\.com\/<\/loc><lastmod>([\d-]+)/)?.[1]

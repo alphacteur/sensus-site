@@ -11,6 +11,7 @@
 | 1.3 | Compléter les mentions légales (forme juridique, adresse du siège, SIRET) | P1 | Infos de Théo | S | Plus aucun crochet | ⛔ |
 | 1.4 | Search Console « Domaine » (TXT DNS Squarespace) et envoi du sitemap | P1 | Accès Google de SENSUS | S | Propriété vérifiée, sitemap lu | 🔄 propriété créée le 26/10 (compte theo@), TXT validé par Quentin mais pas encore ajouté : Squarespace demande une vérification Google à faire par l'utilisateur |
 | 1.5 | Bing Webmaster Tools (import depuis Search Console) | P2 | 1.4 | S | Propriété vérifiée | ⏳ |
+| 1.5b | IndexNow (fichier de clé et envoi des URL à Bing, Yandex…) | P2 | Accord pour publier sur `main` | S | URL soumises | ❓ |
 | 1.6 | Créer la fiche Google Business Profile (zone desservie, adresse masquée) | P1 | Adresse du siège, accès Google | M | Fiche vérifiée | ⛔ |
 | 1.7 | Choisir l'outil d'audience (voir le plan de mesure §3), puis l'installer avec les événements | P2 | Décision et budget | M | `devis_envoye` mesuré | ❓ |
 | 1.8 | Mesure PageSpeed Insights (mobile et ordinateur) de référence | P2 | 1.2 | S | LCP, CLS, INP de laboratoire consignés dans le tableau de bord | ⛔ quota de l'API sans clé épuisé : à lancer sur pagespeed.web.dev ou avec une clé d'API |
@@ -36,7 +37,7 @@
 |---|---|---|---|---|---|---|
 | 3.1 | Page `/realisations/` et 2 ou 3 cas réels (accord client, photos réelles) | P1 | Matière réelle | L | Pages vues des cas, contribution aux devis | ⏳ |
 | 3.2 | Guide « Budget d'un séminaire d'entreprise » (brief prêt) | P1 | 2.3, fourchettes réelles de SENSUS | M | Impressions, clics vers le devis | ⏳ |
-| 3.3 | Guide « Conducteur d'un événement » (avec modèle) | P2 | — | M | Idem | ⏳ |
+| 3.3 | Guide « Conducteur d'un événement » (avec modèle) | P2 | — | M | Idem | 🔄 prêt sur `seo/guide-conducteur`, relecture de Théo attendue |
 | 3.4 | Routine d'avis GBP après chaque mission | P1 | 1.6 | S par mission | Avis par trimestre | ⏳ |
 | 3.5 | Liens partenaires : lieux et prestataires réels (2 par trimestre visés) | P2 | Projets réalisés | M | Liens référents gagnés | ⏳ |
 | 3.6 | Bloc « Qui est derrière SENSUS » (parcours de Théo) | P2 | Contenu de Théo | S | — | ❓ |
