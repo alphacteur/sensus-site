@@ -1,5 +1,10 @@
 # Journal des modifications SEO — SENSUS
 
+## 2026-10-26 · Guide et IndexNow mis en ligne
+
+- **Guide** `/guides/conducteur-evenement/` mis en ligne (fusion de `seo/guide-conducteur`, accord de Quentin). En ligne : 200 en HTTPS, 301 sans barre oblique finale, `Article`, `BreadcrumbList` et `FAQPage` présents, lien depuis la page Soirée, sitemap à 5 URL. Indexation demandée dans Search Console (file prioritaire).
+- **IndexNow** : fichier de clé `/816d3a6ddd1117826a58aebab3a2a5e2.txt` publié (commit `345db94`, 200, contenu exact). Les 5 URL ont été soumises à `api.indexnow.org` : **HTTP 202** (accepté, vérification de la clé par les moteurs en cours). **Ne pas supprimer le fichier de clé.** À chaque nouvelle page, soumettre son URL avec la même clé.
+
 ## 2026-10-26 · Google Search Console configurée
 
 - **Propriété « Domaine » `sensusagency.com`**, compte theo@sensusagency.com. Validation par un enregistrement TXT `@` → `google-site-verification=LNbln…` ajouté chez Squarespace avec l'accord de Quentin. Les autres enregistrements DNS ne changent pas (4 A, 4 AAAA, CNAME www, MX, SPF, DKIM, _domainconnect vérifiés après l'ajout). **Ne pas supprimer ce TXT** : il maintient la validation.
