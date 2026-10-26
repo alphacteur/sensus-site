@@ -1,5 +1,15 @@
 # Journal des modifications SEO — SENSUS
 
+## 2026-10-26 · Google Search Console configurée
+
+- **Propriété « Domaine » `sensusagency.com`**, compte theo@sensusagency.com. Validation par un enregistrement TXT `@` → `google-site-verification=LNbln…` ajouté chez Squarespace avec l'accord de Quentin. Les autres enregistrements DNS ne changent pas (4 A, 4 AAAA, CNAME www, MX, SPF, DKIM, _domainconnect vérifiés après l'ajout). **Ne pas supprimer ce TXT** : il maintient la validation.
+- **Sitemap** `https://sensusagency.com/sitemap.xml` envoyé : « Opération effectuée », 4 pages découvertes.
+- **Inspection et demande d'indexation** (file prioritaire) :
+  - `/` : **déjà indexée** (« La page est indexée »), nouvelle exploration demandée pour prendre en compte le nouveau title et le nouveau H1 ;
+  - `/renfort-agence-evenementielle/` : « Détectée, actuellement non indexée » (découverte via le sitemap), indexation demandée ;
+  - `/organisation-seminaire-entreprise/` et `/organisation-soiree-entreprise/` : « Google ne reconnaît pas cette URL », indexation demandée.
+- Les rapports Performances et Indexation affichent « Traitement des données en cours » : premières données attendues sous 1 à quelques jours.
+
 ## 2026-10-26 · Branche `seo/guide-conducteur` (non mise en ligne, validation attendue)
 
 | Fichier | Modification | Motif |

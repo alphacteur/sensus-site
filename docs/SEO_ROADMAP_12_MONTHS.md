@@ -9,7 +9,7 @@
 | 1.1 | Corrections techniques sûres (H1, title, meta, 404, sitemap, données structurées, icônes, repli sans JS) | P1 | — | S | Validation des balises, aucun écart visuel | ✅ branche `seo/fondations` |
 | 1.2 | Mise en ligne de la branche `seo/fondations` | P1 | Validation de Quentin et Théo | S | Déploiement réussi, contrôle visuel | ✅ 26/10 (`ffcf6fc`) |
 | 1.3 | Compléter les mentions légales (forme juridique, adresse du siège, SIRET) | P1 | Infos de Théo | S | Plus aucun crochet | ⛔ |
-| 1.4 | Search Console « Domaine » (TXT DNS Squarespace) et envoi du sitemap | P1 | Accès Google de SENSUS | S | Propriété vérifiée, sitemap lu | 🔄 propriété créée le 26/10 (compte theo@), TXT validé par Quentin mais pas encore ajouté : Squarespace demande une vérification Google à faire par l'utilisateur |
+| 1.4 | Search Console « Domaine » (TXT DNS Squarespace) et envoi du sitemap | P1 | Accès Google de SENSUS | S | Propriété vérifiée, sitemap lu | ✅ 26/10 : propriété validée, sitemap lu (4 pages), indexation demandée pour les 4 URL |
 | 1.5 | Bing Webmaster Tools (import depuis Search Console) | P2 | 1.4 | S | Propriété vérifiée | ⏳ |
 | 1.5b | IndexNow (fichier de clé et envoi des URL à Bing, Yandex…) | P2 | Accord pour publier sur `main` | S | URL soumises | ❓ |
 | 1.6 | Créer la fiche Google Business Profile (zone desservie, adresse masquée) | P1 | Adresse du siège, accès Google | M | Fiche vérifiée | ⛔ |

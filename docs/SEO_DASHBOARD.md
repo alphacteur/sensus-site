@@ -19,8 +19,8 @@
 
 | Indicateur | Valeur |
 |---|---|
-| URL indexables publiées | 1 (`/`) |
-| Pages indexées | n. d. (Search Console non configurée) |
+| URL indexables publiées | 1 (`/`) le 26/10 au matin, 4 le 26/10 au soir (accueil et 3 pages de services) |
+| Pages indexées | 1 sur 4 (`/` indexée, inspection Search Console du 26/10). Les 3 pages de services sont en file d'indexation prioritaire. |
 | Clics, impressions, CTR, positions | n. d. |
 | Core Web Vitals | n. d. (pas de données terrain, PageSpeed Insights pas encore lancé) |
 | Conversions organiques | n. d. (aucun outil d'audience) |
