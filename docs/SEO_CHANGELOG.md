@@ -1,5 +1,31 @@
 # Journal des modifications SEO — SENSUS
 
+## 2026-10-26 · Branche `seo/pages-vague-1` (non mise en ligne, validation attendue)
+
+### Fichiers
+
+| Fichier | Modification | Motif |
+|---|---|---|
+| `tools/build-pages.mjs` | Générateur sans dépendance (`node tools/build-pages.mjs`). Il reprend **tel quel** le CSS, les polices, l'en-tête, la méthode, le pied de page et les mentions légales de `index.html`, puis produit `/<slug>/index.html` et `sitemap.xml`. | Option « générateur léger » de l'architecture (§7) : une seule source pour le style et les mentions légales, donc aucune divergence entre pages. |
+| `src/pages/renfort-agence-evenementielle.html` → `/renfort-agence-evenementielle/` | Page « Renfort d'agence événementielle, en marque blanche » : quand faire appel, prise en charge, méthode de travail, livrables, FAQ propre (5 questions), CTA avec type de demande pré-rempli | Vague 1. Cible la requête la moins disputée de l'étude (aucune agence concurrente positionnée). |
+| `src/pages/organisation-seminaire-entreprise.html` → `/organisation-seminaire-entreprise/` | Page « Organisation de séminaires d'entreprise en Provence » : cadrage, propositions, inscriptions, coordination, formules, FAQ propre | Vague 1. Angle « méthode d'agence » sur des résultats dominés par les lieux et les plateformes. |
+| `index.html` | Liens vers les deux pages (panneau Séminaires, carte Agences, pied de page). Pré-sélection du type d'événement via `?type=…`. Message d'attente gris pendant l'envoi du formulaire. | Maillage, conversion (audit B5) |
+| `sitemap.xml` | 3 URL (générées) | Indexation |
+| `robots.txt` | `Disallow: /src/` et `/tools/` | Fichiers sources non destinés à l'exploration |
+
+**Règle de contenu suivie** : chaque affirmation des nouvelles pages reprend une information déjà publiée sur l'accueil (missions, livrables, formules, FAQ, zone d'intervention, opérateur partenaire pour les voyages). Aucune référence, aucun chiffre, aucun lieu, aucun partenaire nommé n'est ajouté. Deux formulations sont nouvelles et à valider par Théo : « Absorber une période chargée sans recruter » et « Votre agence garde la relation client et la direction du projet ».
+
+### Tests (serveur local, Chromium intégré)
+
+- Les 2 pages : un seul H1, title et canonical propres, JSON-LD analysé sans erreur (`WebPage`, `Service`, `BreadcrumbList`, `FAQPage`). Tous les liens d'ancre pointent vers l'accueil (`/#…`), sauf l'évitement `#contenu`. Les CTA mènent à `/?type=…#devis`.
+- Mobile 375 px : aucun élément ne dépasse de l'écran, cartes sur 1 colonne, H1 à 44 px. Ordinateur : rendu cohérent avec l'accueil.
+- Accueil : `?type=Renfort%20agence` coche « Renfort agence », un type inconnu laisse « Séminaire ». Les 4 nouveaux liens sont présents. Canonical inchangée.
+- Message d'attente testé avec `fetch` neutralisé (aucun envoi réel) : « L'envoi peut prendre jusqu'à une minute… », en gris.
+- Console : aucune erreur JavaScript.
+
+### Non vérifié
+- Mesure PageSpeed ou Lighthouse : le quota de l'API sans clé est épuisé, et le téléchargement de Lighthouse en local a été refusé par le système d'autorisation de l'agent. À lancer sur pagespeed.web.dev.
+
 ## 2026-10-26 · Branche `seo/fondations`, mise en ligne le 26/10 (commit `ffcf6fc` sur `main`)
 
 **Vérification après déploiement** (build GitHub Pages `built`) : page d'accueil en 200 et HTTPS sans contenu mixte. Title, meta description et H1 conformes. JSON-LD lu sans erreur. Slogan animé (7 mots). Formulaire : passage à l'étape 2 fonctionnel. Console sans erreur. Une URL inexistante renvoie un 404 avec la page « Page introuvable · SENSUS ». `logo.png`, `apple-touch-icon.png`, `robots.txt` (avec `Disallow: /docs/`) et `sitemap.xml` (lastmod au 2026-10-26) répondent en 200.

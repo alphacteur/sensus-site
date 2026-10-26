@@ -7,28 +7,28 @@
 | # | Action | Priorité | Dépendance | Effort | KPI | État |
 |---|---|---|---|---|---|---|
 | 1.1 | Corrections techniques sûres (H1, title, meta, 404, sitemap, données structurées, icônes, repli sans JS) | P1 | — | S | Validation des balises, aucun écart visuel | ✅ branche `seo/fondations` |
-| 1.2 | Mise en ligne de la branche `seo/fondations` | P1 | Validation de Quentin et Théo | S | Déploiement réussi, contrôle visuel | ❓ |
+| 1.2 | Mise en ligne de la branche `seo/fondations` | P1 | Validation de Quentin et Théo | S | Déploiement réussi, contrôle visuel | ✅ 26/10 (`ffcf6fc`) |
 | 1.3 | Compléter les mentions légales (forme juridique, adresse du siège, SIRET) | P1 | Infos de Théo | S | Plus aucun crochet | ⛔ |
 | 1.4 | Search Console « Domaine » (TXT DNS Squarespace) et envoi du sitemap | P1 | Accès Google de SENSUS | S | Propriété vérifiée, sitemap lu | ⛔ |
 | 1.5 | Bing Webmaster Tools (import depuis Search Console) | P2 | 1.4 | S | Propriété vérifiée | ⏳ |
 | 1.6 | Créer la fiche Google Business Profile (zone desservie, adresse masquée) | P1 | Adresse du siège, accès Google | M | Fiche vérifiée | ⛔ |
 | 1.7 | Choisir l'outil d'audience (voir le plan de mesure §3), puis l'installer avec les événements | P2 | Décision et budget | M | `devis_envoye` mesuré | ❓ |
-| 1.8 | Mesure PageSpeed Insights (mobile et ordinateur) de référence | P2 | 1.2 | S | LCP, CLS, INP de laboratoire consignés dans le tableau de bord | ⏳ |
+| 1.8 | Mesure PageSpeed Insights (mobile et ordinateur) de référence | P2 | 1.2 | S | LCP, CLS, INP de laboratoire consignés dans le tableau de bord | ⛔ quota de l'API sans clé épuisé : à lancer sur pagespeed.web.dev ou avec une clé d'API |
 | 1.9 | Vérification manuelle des résultats Google depuis Aix et Marseille (navigation privée) | P2 | — | S | Captures datées | ⏳ |
 
 ## Mois 2–3 : pages commerciales
 
 | # | Action | Priorité | Dépendance | Effort | KPI | État |
 |---|---|---|---|---|---|---|
-| 2.1 | Décision technique : HTML statique ou générateur (voir l'architecture §7) | P1 | — | S | Décision consignée | ❓ |
-| 2.2 | Page `/renfort-agence-evenementielle/` | P1 | 2.1, contenu validé par Théo | M | Indexée, impressions sur « renfort agence événementielle » | ⏳ |
-| 2.3 | Page `/organisation-seminaire-entreprise/` (angle Provence et Aix, méthode, FAQ) | P1 | 2.1 | M | Impressions sur les requêtes « séminaire » | ⏳ |
+| 2.1 | Décision technique : HTML statique ou générateur (voir l'architecture §7) | P1 | — | S | Décision consignée | ✅ générateur sans dépendance `tools/build-pages.mjs` |
+| 2.2 | Page `/renfort-agence-evenementielle/` | P1 | 2.1, contenu validé par Théo | M | Indexée, impressions sur « renfort agence événementielle » | 🔄 prête sur `seo/pages-vague-1`, validation attendue |
+| 2.3 | Page `/organisation-seminaire-entreprise/` (angle Provence et Aix, méthode, FAQ) | P1 | 2.1 | M | Impressions sur les requêtes « séminaire » | 🔄 prête sur `seo/pages-vague-1`, validation attendue |
 | 2.4 | Page `/organisation-soiree-entreprise/` | P2 | 2.1 | M | Impressions | ⏳ |
 | 2.5 | Page `/mentions-legales/` | P2 | 1.3 | S | — | ⏳ |
-| 2.6 | Maillage : liens « En savoir plus » depuis les onglets de missions et « Pour qui » | P1 | 2.2–2.4 | S | Clics internes | ⏳ |
+| 2.6 | Maillage : liens « En savoir plus » depuis les onglets de missions et « Pour qui » | P1 | 2.2–2.4 | S | Clics internes | 🔄 fait pour les 2 pages (branche) |
 | 2.7 | Sur-titres et `h2` descriptifs sur l'accueil (constat T16 de l'audit) | P2 | Validation éditoriale | S | — | ❓ |
 | 2.8 | Inscriptions : offices de tourisme d'Aix et de Marseille, Bureau des Congrès, La Fabrique du Net, Evénementiel pour tous, Bing Places, Apple Business Connect, LinkedIn | P1 | 1.6 (NAP stabilisé) | M | Citations actives | ⏳ |
-| 2.9 | Message « l'envoi peut prendre jusqu'à une minute » sur le formulaire | P2 | Validation | S | Taux d'échec et d'abandon | ❓ |
+| 2.9 | Message « l'envoi peut prendre jusqu'à une minute » sur le formulaire | P2 | Validation | S | Taux d'échec et d'abandon | 🔄 fait sur la branche |
 
 ## Mois 4–6 : autorité et contenu
 

@@ -438,6 +438,7 @@ input[type="range"]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;b
 .back{background:none;border:0;color:var(--mute-p);cursor:pointer;font-size:15px;padding:8px 0;font-weight:500}
 .back:hover{color:var(--ink)}
 .err{color:var(--err);font-size:14px;min-height:1.4em;margin:14px 0 0}
+.err.wait{color:var(--mute-p)}
 .hp{position:absolute;left:-5000px}
 .done{display:none;gap:20px}
 .done.active{display:grid;animation:qin .6s var(--ease)}
@@ -692,6 +693,7 @@ dialog .close{position:absolute;top:16px;right:16px;width:40px;height:40px;borde
             <div class="mp-item"><b>Coordination &amp; partenaires</b><span>Faciliter les échanges avec les opérateurs et préparer le déroulé.</span></div>
           </div>
           <div class="mp-deliv"><em>À noter</em><p>Les réservations et prestations de voyage sont portées par l’opérateur partenaire retenu.</p></div>
+          <a class="tlink" href="/organisation-seminaire-entreprise/">Organisation de séminaires d’entreprise →</a>
         </article>
       </div>
     </div>
@@ -706,7 +708,7 @@ dialog .close{position:absolute;top:16px;right:16px;width:40px;height:40px;borde
       <p class="mute rv d1">Des agences qui ont besoin de renfort aux entreprises qui veulent réunir leurs équipes en Provence.</p>
     </div>
     <div class="aud">
-      <article class="rv"><span class="k">Renfort &amp; marque blanche</span><h3>Agences <span class="serif">&amp;</span> organisateurs</h3><div><p>Production, coordination et pilotage externalisé, intégrés à vos méthodes et à votre équipe.</p><ul><li>Production déléguée</li><li>Pics d’activité</li><li>Marque blanche</li></ul></div></article>
+      <article class="rv"><span class="k">Renfort &amp; marque blanche</span><h3>Agences <span class="serif">&amp;</span> organisateurs</h3><div><p>Production, coordination et pilotage externalisé, intégrés à vos méthodes et à votre équipe.</p><ul><li>Production déléguée</li><li>Pics d’activité</li><li>Marque blanche</li></ul><p style="margin-top:22px"><a class="tlink" href="/renfort-agence-evenementielle/">Renfort d’agence en marque blanche →</a></p></div></article>
       <article class="rv d1"><span class="k">Interne &amp; externe</span><h3>Entreprises <span class="serif">&amp;</span> marques</h3><div><p>Séminaires, soirées, événements internes et expériences de marque à Aix, Marseille et dans toute la région.</p><ul><li>Séminaires</li><li>Soirées</li><li>Lancements</li></ul></div></article>
       <article class="rv d2"><span class="k">Projets collectifs</span><h3>Festivals <span class="serif">&amp;</span> CSE</h3><div><p>Production, recherche de partenaires et accompagnement de projets portés par une équipe ou une association.</p><ul><li>Festivals</li><li>Événements CSE</li><li>Partenariats</li></ul></div></article>
     </div>
@@ -897,7 +899,7 @@ dialog .close{position:absolute;top:16px;right:16px;width:40px;height:40px;borde
         <a class="logo" href="#accueil">SENSUS</a>
         <p class="mute" style="margin-top:18px;max-width:40ch;font-size:15px">Agence de production événementielle à Aix-en-Provence et Marseille. Conception, production, coordination et partenariats pour agences, entreprises, festivals et CSE.</p>
       </div>
-      <div><h4>Missions</h4><ul><li><a href="#missions" data-tab="1">Conception &amp; cadrage</a></li><li><a href="#missions" data-tab="2">Production &amp; pilotage</a></li><li><a href="#missions" data-tab="3">Coordination terrain</a></li><li><a href="#missions" data-tab="4">Partenariats</a></li><li><a href="#missions" data-tab="5">Séminaires</a></li></ul></div>
+      <div><h4>Missions</h4><ul><li><a href="#missions" data-tab="1">Conception &amp; cadrage</a></li><li><a href="#missions" data-tab="2">Production &amp; pilotage</a></li><li><a href="#missions" data-tab="3">Coordination terrain</a></li><li><a href="#missions" data-tab="4">Partenariats</a></li><li><a href="/organisation-seminaire-entreprise/">Séminaires d’entreprise</a></li><li><a href="/renfort-agence-evenementielle/">Renfort d’agence</a></li></ul></div>
       <div><h4>Agence</h4><ul><li><a href="#vision">Vision</a></li><li><a href="#pour-qui">Pour qui</a></li><li><a href="#formules">Formules</a></li><li><a href="#methode">Méthode</a></li><li><a href="#faq">FAQ</a></li></ul></div>
       <div><h4>Contact</h4><ul><li>Théo Voyer</li><li><a href="mailto:theo@sensusagency.com">theo@sensusagency.com</a></li><li><a href="tel:+33621864834">06 21 86 48 34</a></li><li class="mute">Aix-en-Provence · Marseille</li></ul></div>
     </div>
@@ -1044,6 +1046,11 @@ const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + FORM_EMAIL;
   tick();
   if (!reduce) setInterval(() => { idx = (idx + 1) % cues.length; tick(); }, 2800);
 
+  /* Type d'événement pré-sélectionné depuis une page de service (?type=…) */
+  const preType = new URLSearchParams(location.search).get("type");
+  const preRadio = preType && $$("#type-chips input").find(i => i.value === preType);
+  if (preRadio) preRadio.checked = true;
+
   /* Raccourcis "Vous préparez…" */
   $$(".qchip").forEach(b => b.addEventListener("click", () => {
     const r = $$("#type-chips input").find(i => i.value === b.dataset.type);
@@ -1149,6 +1156,7 @@ const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + FORM_EMAIL;
 
     const btn = $("#send");
     btn.disabled = true; $(".lbl", btn).textContent = "Envoi en cours…";
+    err.classList.add("wait"); err.textContent = "L’envoi peut prendre jusqu’à une minute. Merci de garder cette page ouverte.";
     let ok = false;
     try {
       const res = await fetch(FORM_ENDPOINT, {

@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /docs/
+Disallow: /src/
+Disallow: /tools/
 
 Sitemap: https://sensusagency.com/sitemap.xml

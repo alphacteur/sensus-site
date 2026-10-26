@@ -110,7 +110,7 @@ Le site actuel n'a ni gabarit ni build. Pour plusieurs pages, deux options :
 - **A. HTML statique dupliqué** : rapide, mais l'en-tête, le pied de page et le CSS sont copiés dans chaque page, donc la maintenance devient risquée au-delà de 4 ou 5 pages.
 - **B. Générateur statique léger (recommandé à partir de 3 pages)**, par exemple Eleventy ou Astro, construit par GitHub Actions et publié sur GitHub Pages : en-tête, pied, CSS et données structurées partagés, sitemap généré automatiquement.
 
-Décision attendue : A ou B. Le choix n'a aucun effet sur les URL publiques.
+**Décision prise le 26/10 : B, en version minimale.** `tools/build-pages.mjs` (Node, aucune dépendance) lit `index.html` et réutilise son CSS, son en-tête, sa méthode, son pied de page et ses mentions légales. Il génère ensuite chaque page à partir de `src/pages/<slug>.html` (un bloc `META` en JSON, puis le contenu propre à la page), ainsi que le `sitemap.xml`. Après une modification de l'accueil ou d'une page source, il suffit de relancer `node tools/build-pages.mjs` et de committer les fichiers générés. Pas de GitHub Actions : le dépôt reste publiable tel quel par GitHub Pages.
 
 ## 8. Moteurs de réponse IA (Phase 7)
 
