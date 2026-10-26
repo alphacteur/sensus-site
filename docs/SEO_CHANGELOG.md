@@ -1,6 +1,12 @@
 # Journal des modifications SEO — SENSUS
 
-## 2026-10-26 · Branche `seo/page-soiree` (non mise en ligne, validation attendue)
+## 2026-10-26 · Correctif : arrivée sur le formulaire de devis depuis les pages de services
+
+**Constat (vérification en ligne de la page Soirée)** : un lien `/?type=…#devis` ouvert depuis une autre page arrivait en haut de l'accueil (`scrollY = 0`), au lieu du formulaire. Le défilement d'ancre `smooth` du navigateur était interrompu pendant le chargement. Les boutons devis des 3 pages de services étaient concernés.
+**Correction** (`index.html`) : au `load`, si l'URL contient une ancre et que la cible n'est pas déjà en place, défilement immédiat (`behavior:"instant"`, en respectant le `scroll-padding-top` de 88 px).
+**Tests (local)** : clic sur « Préparer votre soirée » → formulaire à 88 px du haut, « Soirée d'entreprise » coché. L'accueil sans ancre reste en haut. Console sans erreur.
+
+## 2026-10-26 · Branche `seo/page-soiree`, mise en ligne le 26/10 (commit `13d9977`) : 200 en HTTPS, 301 vers l'URL avec barre oblique finale, JSON-LD et H1 conformes, 4 URL dans le sitemap, liens présents depuis l'accueil et les autres pages
 
 | Fichier | Modification | Motif |
 |---|---|---|

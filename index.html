@@ -1051,6 +1051,13 @@ const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + FORM_EMAIL;
   const preRadio = preType && $$("#type-chips input").find(i => i.value === preType);
   if (preRadio) preRadio.checked = true;
 
+  /* Arrivée depuis une autre page sur une ancre (ex. /?type=…#devis) : le défilement
+     "smooth" du navigateur peut être interrompu pendant le chargement, on le termine ici. */
+  const anchor = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (anchor) addEventListener("load", () => setTimeout(() => {
+    if (Math.abs(anchor.getBoundingClientRect().top - 88) > 40) anchor.scrollIntoView({behavior:"instant", block:"start"});
+  }, 60));
+
   /* Raccourcis "Vous préparez…" */
   $$(".qchip").forEach(b => b.addEventListener("click", () => {
     const r = $$("#type-chips input").find(i => i.value === b.dataset.type);
