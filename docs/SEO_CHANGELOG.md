@@ -1,5 +1,18 @@
 # Journal des modifications SEO — SENSUS
 
+## 2026-10-26 · Branche `seo/page-soiree` (non mise en ligne, validation attendue)
+
+| Fichier | Modification | Motif |
+|---|---|---|
+| `src/pages/organisation-soiree-entreprise.html` → `/organisation-soiree-entreprise/` | Page « Organisation de soirées d'entreprise à Aix et Marseille » : intention et cadrage, production et jour J, exemple de conducteur (celui de l'accueil, présenté comme un exemple), FAQ propre (5 questions), CTA avec « Soirée d'entreprise » pré-rempli | Feuille de route 2.4. Requête « organisation soirée entreprise Marseille » : résultats dominés par les plateformes de réservation de lieux, donc un angle « agence » à prendre. |
+| `index.html` | Lien depuis la carte « Entreprises & marques » et dans le pied de page | Maillage |
+| `src/pages/organisation-seminaire-entreprise.html` | Lien vers la page Soirée | Maillage entre services |
+| Pages générées, `sitemap.xml` | Régénérés (4 URL) | — |
+
+Contenu : uniquement des éléments déjà publiés sur l'accueil (missions, livrables, conducteur d'exemple, délai « quelques semaines si le lieu est disponible », FAQ technique et zone). Les étiquettes « Lieux, Traiteur, Technique » reprennent le conducteur d'exemple.
+
+Tests (local) : un seul H1, JSON-LD valide (`WebPage`, `Service`, `BreadcrumbList`, `FAQPage`), canonical correcte. Mobile 375 px sans débordement, cartes sur 1 colonne. `?type=Soirée d'entreprise` coche le bon choix. 2 liens depuis l'accueil. Console sans erreur.
+
 ## 2026-10-26 · Branche `seo/pages-vague-1`, mise en ligne le 26/10 (commit `5792294` sur `main`)
 
 **Vérification après déploiement** (build `built`) :
