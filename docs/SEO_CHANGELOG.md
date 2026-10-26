@@ -1,6 +1,8 @@
 # Journal des modifications SEO — SENSUS
 
-## 2026-10-26 · Branche `seo/fondations` (non mise en ligne)
+## 2026-10-26 · Branche `seo/fondations`, mise en ligne le 26/10 (commit `ffcf6fc` sur `main`)
+
+**Vérification après déploiement** (build GitHub Pages `built`) : page d'accueil en 200 et HTTPS sans contenu mixte. Title, meta description et H1 conformes. JSON-LD lu sans erreur. Slogan animé (7 mots). Formulaire : passage à l'étape 2 fonctionnel. Console sans erreur. Une URL inexistante renvoie un 404 avec la page « Page introuvable · SENSUS ». `logo.png`, `apple-touch-icon.png`, `robots.txt` (avec `Disallow: /docs/`) et `sitemap.xml` (lastmod au 2026-10-26) répondent en 200.
 
 ### Fichiers modifiés et créés
 
